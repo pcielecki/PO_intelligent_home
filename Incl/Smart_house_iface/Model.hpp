@@ -8,7 +8,7 @@
 #ifndef INCL_SMART_HOUSE_IFACE_MODEL_HPP_
 #define INCL_SMART_HOUSE_IFACE_MODEL_HPP_
 
-#include "MVA_iface/Model.hpp"
+#include "MVA_iface/MVA_Model.hpp"
 
 using std::string;
 

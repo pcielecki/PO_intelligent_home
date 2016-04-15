@@ -19,9 +19,10 @@ namespace Smart_house{
 
 typedef unsigned int ID_t;
 typedef char Smart_house_char;
-typedef std::vector<Adapter_param> A_param_v;
+
 
 class Adapter_param{
+public:
 	string param_name;
 	string param_value;
 };
@@ -30,23 +31,19 @@ class Data
 {
 public:
 	virtual void convert(string desired_unit) = 0;
-	virtual string serializeAndDestroy(void) noexcept = 0;
+	virtual string serializeAndDestroy(void) = 0;
 
-	static Data* deserializeAndCreate(string serialized_data) const;
+	static Data* deserializeAndCreate(const string& serialized_data);
 
-private:
+protected:
 	virtual ~Data(void){}
 };
 
-class IntData : Data{
+class IntData : public Data{
 public:
-	IntData(int val, string unit, string type){
-		this->value = val;	this->unit = unit; this-> type = type;
-	}
-
 	virtual void convert(string desired_unit) = 0;
 
-	string serializeAndDestroy(void) noexcept{
+	string serializeAndDestroy(void){
 		std::ostringstream conv;
 
 		conv << value;
@@ -57,7 +54,7 @@ public:
 		return out;
 	}
 
-private:
+protected:
 	int value;
 	string unit;
 	string type;
@@ -65,31 +62,17 @@ private:
 	virtual ~IntData(void){}
 };
 
-class TempData : IntData{
+class TempData : public IntData{
 public:
-
 	void convert(string desired_unit){
-		switch(	desired_unit	)
-		{
-		case "K":
+		if("K" == desired_unit)
 			to_Kelvins();
-			break;
-
-		case "C":
+		else if("C" == desired_unit)
 			to_Celsius();
-			break;
-
-		default:
-			break;
-		}
-
 	}
 
 
 private:
-
-	string type = "Temperature";
-
 	void to_Kelvins(void){
 		if("C" == this->unit)	this->value = 273 + this->value;
 		else;
@@ -99,15 +82,12 @@ private:
 	}
 };
 
-static Data*
-Data::deserializeAndCreate(string serialized_data) const{
+Data*
+Data::deserializeAndCreate(const string& serialized_data){
 	string type;
 
-	switch(type){
-	case "Temperature":
+	if("Temperature" == type)
 		return new TempData();
-		break;
-	}
 }
 
 

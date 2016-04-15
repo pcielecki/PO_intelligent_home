@@ -8,7 +8,7 @@
 #ifndef INCL_DUMMY_MODELS_DUMMY_MODEL_HPP_
 #define INCL_DUMMY_MODELS_DUMMY_MODEL_HPP_
 
-#include "../../Smart_house_iface/Model.hpp"
+#include "../Smart_house_iface/Model.hpp"
 
 using std::string;
 using Smart_house::Model;

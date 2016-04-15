@@ -8,8 +8,8 @@
 #ifndef INCL_SMART_HOUSE_IFACE_ADAPTER_HPP_
 #define INCL_SMART_HOUSE_IFACE_ADAPTER_HPP_
 
-#include "../../Utils/String_dict_deserializer.hpp"
-#include "MVA_iface/Adapter.hpp"
+#include "../../src/Utils/String_dict_deserializer.hpp"
+#include "MVA_iface/MVA_Adapter.hpp"
 
 using std::string;
 using namespace Utils;
@@ -26,9 +26,8 @@ public:
 
 
 
-private:
+protected:
 	ID_t 						userID;
-	//A_param_v 					adapter_param_vector;
 	String_dict_deserializer 	des;
 	virtual 					~Adapter(void){}
 };

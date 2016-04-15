@@ -8,16 +8,18 @@
 #ifndef UTILS_STRING_DICT_DESERIALIZER_HPP_
 #define UTILS_STRING_DICT_DESERIALIZER_HPP_
 
-#include "../Incl/Smart_house_iface/Smart_house_defs.hpp"
+#include "../../Incl/Smart_house_iface/Smart_house_defs.hpp"
+
+using std::string;
 
 namespace Utils{
 
 class String_dict_deserializer{
 public:
-	Smart_house::Adapter_param deserialize(MVA::MVA_string& serialized_data) const;
+	Smart_house::Adapter_param deserialize(string& serialized_data) const;
 
 private:
-	const int STRING_EMPTY = 0;
+	static const unsigned int STRING_EMPTY = 0;
 };
 
 }

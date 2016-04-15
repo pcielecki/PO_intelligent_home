@@ -1,16 +1,15 @@
 
-#include "../Incl/SH_exceptions.hpp"
+#include "../../Incl/SH_exceptions.hpp"
 #include "String_dict_deserializer.hpp"
 
 namespace Utils{
 
 using namespace Smart_house;
-using namespace MVA;
 using namespace SH_Exceptions;
 
 
 Adapter_param
-String_dict_deserializer::deserialize(MVA_string& serialized_data) const
+String_dict_deserializer::deserialize(string& serialized_data) const
 {
 	size_t name_value_separator;
 	Adapter_param param;
@@ -29,7 +28,7 @@ String_dict_deserializer::deserialize(MVA_string& serialized_data) const
 
 	if(		STRING_EMPTY == param.param_name.length()	||
 			STRING_EMPTY == param.param_value.length())
-		throw StringEmptyException;
+		throw new(StringEmptyException);
 	return param;
 }
 

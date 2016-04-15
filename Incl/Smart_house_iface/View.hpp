@@ -8,7 +8,7 @@
 #ifndef INCL_SMART_HOUSE_IFACE_VIEW_HPP_
 #define INCL_SMART_HOUSE_IFACE_VIEW_HPP_
 
-#include "MVA_iface/View.hpp"
+#include "MVA_iface/MVA_View.hpp"
 
 using std::string;
 
@@ -18,12 +18,12 @@ class View : public MVA::View{
 public:
 	virtual void update(string& serialized_params) const = 0 ;
 
-	ID_t 				getViewID(void);
+	unsigned int 		getViewID(void);
 	string			 	getCategory(void);
 
 
 private:
-	ID_t 				viewID;
+	unsigned int 		viewID;
 	string			 	category;
 };
 

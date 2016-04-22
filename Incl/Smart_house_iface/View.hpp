@@ -8,15 +8,16 @@
 #ifndef INCL_SMART_HOUSE_IFACE_VIEW_HPP_
 #define INCL_SMART_HOUSE_IFACE_VIEW_HPP_
 
+#include <string>
 #include "MVA_iface/MVA_View.hpp"
 
 using std::string;
 
 namespace Smart_house{
 
-class View : public MVA::View{
+class View : public MVA::MVA_View{
 public:
-	virtual void update(string& serialized_params) const = 0 ;
+	virtual void 		update(string& serialized_params) const = 0 ;
 
 	unsigned int 		getViewID(void);
 	string			 	getCategory(void);

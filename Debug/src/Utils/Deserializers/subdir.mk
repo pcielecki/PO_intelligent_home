@@ -4,20 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/Smart_house/Adapter.cpp \
-../src/Smart_house/Data.cpp 
+../src/Utils/Deserializers/String_dict_deserializer.cpp 
 
 OBJS += \
-./src/Smart_house/Adapter.o \
-./src/Smart_house/Data.o 
+./src/Utils/Deserializers/String_dict_deserializer.o 
 
 CPP_DEPS += \
-./src/Smart_house/Adapter.d \
-./src/Smart_house/Data.d 
+./src/Utils/Deserializers/String_dict_deserializer.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-src/Smart_house/%.o: ../src/Smart_house/%.cpp
+src/Utils/Deserializers/%.o: ../src/Utils/Deserializers/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
 	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"

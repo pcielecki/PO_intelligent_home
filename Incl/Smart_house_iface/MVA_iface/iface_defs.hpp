@@ -8,7 +8,6 @@
 #ifndef INCL_MVA_IFACE_IFACE_DEFS_HPP_
 #define INCL_MVA_IFACE_IFACE_DEFS_HPP_
 
-#include <string>
 
 namespace MVA{
 

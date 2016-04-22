@@ -23,8 +23,11 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src/Dummy \
+src/Adapters \
+src/Datas \
+src/Models \
 src/Smart_house \
+src/Utils/Deserializers \
+src/Views \
 src \
-src/Utils \
 

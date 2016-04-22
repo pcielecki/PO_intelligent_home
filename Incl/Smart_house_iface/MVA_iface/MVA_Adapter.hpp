@@ -8,22 +8,27 @@
 #ifndef MVA_IFACE_ADAPTER_HPP_
 #define MVA_IFACE_ADAPTER_HPP_
 
-#include "iface_defs.hpp"
 #include "MVA_Model.hpp"
 #include "MVA_View.hpp"
 
 namespace MVA{
 
-class Adapter{
+class MVA_Adapter{
 public:
-	virtual void refresh(void) = 0;
+	virtual void 	refresh(void) = 0;
+
+	MVA_View* 		getView(void){return this->view;}
+	void			setView(MVA_View* v){this->view = v;}
+
+	MVA_Model*		getModel(void){return this->model;}
+	void			setModel(MVA_Model* m){this->model = m;}
 
 protected:
-	MVA::View& 		view;
-	MVA::Model&		model;
+	MVA_View* 		view;
+	MVA_Model*		model;
 
 
-	virtual ~Adapter(void){}
+	virtual ~MVA_Adapter(void){}
 };
 
 };

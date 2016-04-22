@@ -8,18 +8,18 @@
 #ifndef MVA_IFACE_MODEL_HPP_
 #define MVA_IFACE_MODEL_HPP_
 
-#include "iface_defs.hpp"
+#include <string>
 
 using std::string;
 
 namespace MVA{
 
-class Model{
+class MVA_Model{
 public:
 	virtual string getData(void) = 0;
 
-private:
-	virtual ~Model(void){};
+protected:
+	virtual ~MVA_Model(void){};
 };
 
 };

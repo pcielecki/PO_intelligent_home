@@ -14,12 +14,12 @@ using std::string;
 
 namespace MVA{
 
-class View{
+class MVA_View{
 public:
 	virtual void update(string& serialized_params) const = 0;
 
 protected:
-	virtual ~View(void){}
+	virtual ~MVA_View(void){}
 };
 
 };

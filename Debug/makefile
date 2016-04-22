@@ -8,9 +8,12 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include src/Utils/subdir.mk
+-include src/Views/subdir.mk
+-include src/Utils/Deserializers/subdir.mk
 -include src/Smart_house/subdir.mk
--include src/Dummy/subdir.mk
+-include src/Models/subdir.mk
+-include src/Datas/subdir.mk
+-include src/Adapters/subdir.mk
 -include src/subdir.mk
 -include subdir.mk
 -include objects.mk

@@ -9,8 +9,9 @@
 #define INCL_SMART_HOUSE_IFACE_MODEL_HPP_
 
 #include <string>
-#include "MVA_iface/MVA_Model.hpp"
-#include "Smart_house_defs.hpp"
+
+#include "../../Incl/Smart_house_iface/MVA_iface/MVA_Model.hpp"
+#include "../../Incl/Smart_house_iface/Smart_house_defs.hpp"
 
 using std::string;
 
@@ -18,16 +19,36 @@ namespace Smart_house{
 
 
 class Model : public MVA::MVA_Model{
+	friend class ModelFactory;
 public:
 	virtual string	getData(void) = 0;
 
 	ID_t 			getModelID(void);
 	 string			getCategory(void);
-
+	 static Model* createModel(const string& serializedParams);
 
 private:
-	ID_t 			ID;
+	string 			ID;
 	string		 	category;
+	string 			DeviceLibrary;
+
+
+
+};
+
+class ModelFactory
+{
+	friend class Model;
+
+public:
+	virtual ~ModelFactory(){}
+
+protected:
+	virtual Model* produceModel(const string& serializedData) = 0;
+
+private:
+	static void InitializeModel(Model* model, const string& serializedParams);
+	static ModelFactory* GetModelFactory(const string& dataType);
 
 };
 

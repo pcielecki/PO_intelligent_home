@@ -9,7 +9,8 @@
 #define INCL_SMART_HOUSE_IFACE_VIEW_HPP_
 
 #include <string>
-#include "MVA_iface/MVA_View.hpp"
+
+#include "../../Incl/Smart_house_iface/MVA_iface/MVA_View.hpp"
 
 using std::string;
 

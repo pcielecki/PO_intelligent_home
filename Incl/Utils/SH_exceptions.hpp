@@ -30,8 +30,8 @@ private:
 
 class DataTypeNotSupportedException{
 public:
-	DataTypeNotSupportedException(std::string& s)	{	this->dataTypeName = s;		}
-	std::string& getDataTypeName(void)				{	return this->dataTypeName;	}
+	DataTypeNotSupportedException(const std::string& s)	{	this->dataTypeName = s;		}
+	std::string& getDataTypeName(void)					{	return this->dataTypeName;	}
 private:
 	std::string dataTypeName;
 };

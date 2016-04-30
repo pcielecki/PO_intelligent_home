@@ -9,11 +9,12 @@
 #define INCL_SMART_HOUSE_IFACE_TEMPDATA_HPP_
 
 
-#include "IntData.hpp"
+#include "../../Incl/Datas/IntData.hpp"
 
 class TempData : public IntData{
 public:
-	TempData(int temperature){this->value = temperature;}
+	friend class TempDataFactory;
+	//TempData(int temperature){this->value = temperature;}
 
 	void convert(std::string desired_unit);
 
@@ -26,6 +27,10 @@ private:
 	void to_Celsius(void);
 };
 
+class TempDataFactory : public DataFactory{
 
+public:
+	Data* produceData(const string& dataType);
+};
 
 #endif /* INCL_SMART_HOUSE_IFACE_TEMPDATA_HPP_ */

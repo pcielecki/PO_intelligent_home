@@ -11,6 +11,14 @@
 #include <string>
 
 
+/*
+ * standard serialized data format:
+ * 	[datatype unit {val_n}]
+ * datatype is eg. Temperature, Pressure, IsDoorOpen
+ */
+
+
+
 using std::string;
 
 class Data
@@ -25,10 +33,14 @@ protected:
 	virtual ~Data(void){}
 };
 
-class DataDeserializer
+class DataFactory
 {
 public:
-	static string getDataType(const string& serializedData);
+	static DataFactory* GetDataFactory(const string& dataType);
+
+	virtual Data* produceData(const string& serializedData) = 0;
+
+	virtual ~DataFactory(){}
 };
 
 

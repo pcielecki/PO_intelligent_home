@@ -8,7 +8,7 @@
 #ifndef MVA_IFACE_VIEW_HPP_
 #define MVA_IFACE_VIEW_HPP_
 
-#include "iface_defs.hpp"
+#include "../../../Incl/Smart_house_iface/MVA_iface/iface_defs.hpp"
 
 using std::string;
 

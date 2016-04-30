@@ -9,16 +9,26 @@
 #define INCL_DUMMY_MODELS_DUMMY_MODEL_HPP_
 
 #include <string>
-#include "../Smart_house_iface/Model.hpp"
+
+#include "../../Incl/Smart_house_iface/Model.hpp"
 
 using std::string;
 using Smart_house::Model;
+using Smart_house::ModelFactory;
 
-class Dummy_Model : Smart_house::Model{
+class Dummy_Model : public Model{
 public:
 	string 	getData(void);
+	string getType(void);
+
 };
 
+class DummyModelFactory : public ModelFactory{
+	virtual Model* produceModel(const string& serializedData)
+	{
+		return new Dummy_Model;
+	}
+};
 
 
 #endif /* INCL_DUMMY_MODELS_DUMMY_MODEL_HPP_ */

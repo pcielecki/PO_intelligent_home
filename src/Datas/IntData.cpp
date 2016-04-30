@@ -1,15 +1,15 @@
-
+#include <cstdio>
 #include "../../Incl/Datas/IntData.hpp"
 
 
 string
 IntData::serializeAndDestroy(void){
-	std::ostringstream conv;
+	char strval[10];
 
-		conv << value;
-		string out = type + unit + conv.str();
+	sprintf(strval, "%d", value);
+	string out = type + unit + strval;
 
-		delete this;
+	delete this;
 
-		return out;
+	return out;
 }

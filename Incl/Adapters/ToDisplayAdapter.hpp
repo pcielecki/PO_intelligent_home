@@ -9,7 +9,8 @@
 #define INCL_TODISPLAYADAPTER_HPP_
 
 #include <string>
-#include "../Smart_house_iface/Adapter.hpp"
+
+#include "../../Incl/Smart_house_iface/Adapter.hpp"
 
 using std::string;
 

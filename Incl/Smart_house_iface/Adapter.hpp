@@ -9,10 +9,11 @@
 #define INCL_SMART_HOUSE_IFACE_ADAPTER_HPP_
 
 #include <vector>
-#include "MVA_iface/MVA_Adapter.hpp"
-#include "../Utils/Deserializers/String_dict_deserializer.hpp"
-#include "Smart_house_defs.hpp"
-#include "Adapter_param.hpp"
+
+#include "../../Incl/Smart_house_iface/Adapter_param.hpp"
+#include "../../Incl/Utils/Deserializers/String_dict_deserializer.hpp"
+#include "../../Incl/Smart_house_iface/MVA_iface/MVA_Adapter.hpp"
+#include "../../Incl/Smart_house_iface/Smart_house_defs.hpp"
 
 using std::string;
 using namespace Utils;
@@ -23,7 +24,7 @@ class Adapter : public MVA::MVA_Adapter{
 public:
 	virtual void 				refresh(void) = 0;
 
-	void						setParam(string& param_name, string& param_val);
+	void						setParam(const string& SerializedParam);
 	string						getParamValue(string& param_name);
 
 	ID_t 						getOwner(void){		return userID;		}
@@ -33,7 +34,6 @@ public:
 
 protected:
 	ID_t 						userID;
-	String_dict_deserializer	des;
 	std::vector<Adapter_param*>	adapter_param_vector;
 	virtual 					~Adapter(void);
 };

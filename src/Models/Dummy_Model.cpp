@@ -13,7 +13,9 @@ Dummy_Model::getData(void)
 
 	int val = rand();
 
-	Data* tdata = new TempData(val);
+	TempData* tdata = new TempData();
+	tdata->setValue(val);
 
 	return tdata->serializeAndDestroy();
 }
+

@@ -9,7 +9,8 @@
 #define UTILS_STRING_DICT_DESERIALIZER_HPP_
 
 #include <string>
-#include "../../Smart_house_iface/Adapter_param.hpp"
+
+#include "../../../Incl/Smart_house_iface/Adapter_param.hpp"
 
 using std::string;
 

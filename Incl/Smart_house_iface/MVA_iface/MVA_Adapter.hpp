@@ -8,8 +8,8 @@
 #ifndef MVA_IFACE_ADAPTER_HPP_
 #define MVA_IFACE_ADAPTER_HPP_
 
-#include "MVA_Model.hpp"
-#include "MVA_View.hpp"
+#include "../../../Incl/Smart_house_iface/MVA_iface/MVA_Model.hpp"
+#include "../../../Incl/Smart_house_iface/MVA_iface/MVA_View.hpp"
 
 namespace MVA{
 

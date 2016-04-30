@@ -1,31 +1,37 @@
 #include "../../Incl/Utils/SH_exceptions.hpp"
 #include "../../Incl/Datas/TempData.hpp"
 #include "../../Incl/Smart_house_iface/Data.hpp"
+#include "../../Incl/Utils/Deserializers/DataDeserializers/DataTypeDeserializer.hpp"
 
 using namespace SH_Exceptions;
 
 Data*
 Data::deserializeAndCreate(const string& serialized_data)
 {
-	string dataType = DataDeserializer::getDataType(serialized_data);
+	DataTypeDeserializer des;
+	Data* dt;
 
-	if("Temp" == dataType)
-	{
-		return new TempData();
-	}
+	string dataType = des.deserialize(serialized_data);
 
-	throw(new SH_Exceptions::DataTypeNotSupportedException(dataType));
+	DataFactory* dataFactory = DataFactory::GetDataFactory(dataType);
+
+	dt = dataFactory->produceData(serialized_data);
+
+	delete dataFactory;
+
+	return dt;
 }
 
-
-string
-DataDeserializer::getDataType(const string& serializedData)
+DataFactory*
+DataFactory::GetDataFactory(const string& dataType)
 {
-	int name_value_separator = serializedData.rfind(",");
+	if("Temperature" == dataType)
+		return new TempDataFactory;
 
-	return serializedData.substr(
-			0,
-			name_value_separator-1
-			);
+	//else if("Pressure" == dataType)
+	//	return new PressureDataFactory;
+
+	else
+		throw(new SH_Exceptions::DataTypeNotSupportedException(dataType));
+
 }
-

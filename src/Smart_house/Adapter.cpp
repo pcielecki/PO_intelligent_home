@@ -6,10 +6,11 @@ using std::string;
 namespace Smart_house{
 
 void
-Adapter::setParam(string& param_name, string& param_val)
+Adapter::setParam(const string& SerializedParam)
 {
+	String_dict_deserializer des;
 	this->adapter_param_vector.push_back(
-			new Adapter_param(param_name, param_val)
+			new Adapter_param(des.deserialize(SerializedParam))
 	);
 }
 

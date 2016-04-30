@@ -8,7 +8,7 @@
 #ifndef INCL_VIEWS_CONSOLE_HPP_
 #define INCL_VIEWS_CONSOLE_HPP_
 
-#include "../Smart_house_iface/View.hpp"
+#include "../../Incl/Smart_house_iface/View.hpp"
 
 using std::string;
 using Smart_house :: View;

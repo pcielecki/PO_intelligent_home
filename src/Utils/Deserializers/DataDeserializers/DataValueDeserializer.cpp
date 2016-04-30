@@ -20,7 +20,7 @@ DataValueDeserializer::deserialize(const string& serialized_data)
 
 	string datavalue 	= serialized_data.substr(
 			this->ContentBeginningIndex,
-			this->ContentEndIndex
+			this->ContentLength
 			);
 
 

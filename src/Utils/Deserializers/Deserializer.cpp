@@ -12,19 +12,18 @@ Deserializer::GetContentIndexes(const std::string& serialized_data, int content_
 	while((unsigned int)content_name > this->ContentIterator)
 	{
 		ContentBeginningIndex =
-				serialized_data.find(" ", ContentBeginningIndex + 1) + EqualSignOffset;
+				serialized_data.find(" ", ContentBeginningIndex) + 1;
 
 		++this->ContentIterator;
 	}
 
-	if(-1 == this->ContentBeginningIndex)
-	{
-		throw(new StringEmptyException());
-	}
+	if(-1 == this->ContentBeginningIndex)	throw(new StringEmptyException());
 
 	this->ContentEndIndex =
-			serialized_data.find(" ", ContentBeginningIndex);
+			serialized_data.find(" ", ContentBeginningIndex) - 1;
 
 	if(-1 == this->ContentEndIndex)
-		this->ContentEndIndex = serialized_data.size()-1;
+		this->ContentEndIndex = serialized_data.size();
+
+	this->ContentLength = this->ContentEndIndex - this->ContentBeginningIndex + 1;
 }

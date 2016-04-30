@@ -16,7 +16,7 @@ DataUnitDeserializer::deserialize(const string& serialized_data)
 
 	string dataunit 	= serialized_data.substr(
 			this->ContentBeginningIndex,
-			this->ContentEndIndex
+			this->ContentLength
 			);
 
 	return dataunit;

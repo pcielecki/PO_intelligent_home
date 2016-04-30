@@ -8,7 +8,7 @@ ModelLibDeserializer::deserialize(const string& serialized_data)
 
 	string datatype 	= serialized_data.substr(
 			this->ContentBeginningIndex,
-			this->ContentEndIndex
+			this->ContentLength
 			);
 
 	return datatype;

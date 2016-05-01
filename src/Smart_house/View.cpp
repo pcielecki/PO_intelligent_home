@@ -17,8 +17,10 @@ View*
 View::createView(const string& serializedParams)
 {
 	ViewCategoryDeserializer catDes;
+	string category = catDes.deserialize(serializedParams);
 
-	ViewFactory* vf = ViewFactory::GetViewFactory(catDes.deserialize(serializedParams));
+
+	ViewFactory* vf = ViewFactory::GetViewFactory(category);
 
 	View* view = vf->produceView(serializedParams);
 
@@ -28,7 +30,7 @@ View::createView(const string& serializedParams)
 
 #if VERBOSITY >= 4
 	std::cout << 	"\nCreated view:" <<
-					"\ncategory = " << view->category <<
+					"\ncategory = " << category <<
 					"\nID =  "<< view->viewID <<
 					std::endl;
 #endif
@@ -50,10 +52,8 @@ void
 ViewFactory::InitializeView(View* view, const string& serializedParams)
 {
 	ViewIDDeserializer idDes;
-	ViewCategoryDeserializer catDes;
 
 	view->viewID = idDes.deserialize(serializedParams);
-	view->category = catDes.deserialize(serializedParams);
 }
 
 

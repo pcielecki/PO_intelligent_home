@@ -13,8 +13,10 @@
 #include "../../Incl/Smart_house_iface/Adapter.hpp"
 
 using std::string;
+using Smart_house::Adapter;
+using Smart_house::AdapterFactory;
 
-class ToDisplayAdapter : Smart_house::Adapter{
+class ToDisplayAdapter : public Adapter{
 public:
 	void 				refresh(void);
 	void				setParam(string& serialized_param);
@@ -24,5 +26,12 @@ private:
 };
 
 
+class ToDisplayAdapterFactory : public AdapterFactory{
+public:
+	virtual Adapter* produceAdapter(const string& serializedParams)
+	{
+		return new ToDisplayAdapter;
+	}
+};
 
 #endif /* INCL_TODISPLAYADAPTER_HPP_ */

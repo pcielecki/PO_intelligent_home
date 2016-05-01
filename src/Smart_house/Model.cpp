@@ -29,8 +29,9 @@ Model*
 Model::createModel(const string& serializedParams)
 {
 	ModelCategoryDeserializer catDes;
+	string category = catDes.deserialize(serializedParams);
 
-	ModelFactory* mf = ModelFactory::GetModelFactory(catDes.deserialize(serializedParams));
+	ModelFactory* mf = ModelFactory::GetModelFactory(category);
 
 	Model* model = mf->produceModel(serializedParams);
 
@@ -40,7 +41,7 @@ Model::createModel(const string& serializedParams)
 
 #if VERBOSITY >= 4
 	std::cout << 	"Created model: "<<
-					"\ncategory = " << model->category <<
+					"\ncategory = " << category <<
 					"\nID =  "<< model->ID <<
 					"\nLib = "<< model->DeviceLibrary << std::endl;
 #endif
@@ -62,11 +63,9 @@ void
 ModelFactory::InitializeModel(Model* model, const string& serializedParams)
 {
 	ModelIDDeserializer idDes;
-	ModelCategoryDeserializer catDes;
 	ModelLibDeserializer libDes;
 
 	model->ID = idDes.deserialize(serializedParams);
-	model->category = catDes.deserialize(serializedParams);
 	model->DeviceLibrary = libDes.deserialize((serializedParams));
 }
 

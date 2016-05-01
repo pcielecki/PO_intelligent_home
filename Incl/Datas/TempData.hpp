@@ -14,7 +14,6 @@
 class TempData : public IntData{
 public:
 	friend class TempDataFactory;
-	//TempData(int temperature){this->value = temperature;}
 
 	void convert(std::string desired_unit);
 

@@ -1,9 +1,10 @@
-/*
- * TempData.cpp
- *
- *  Created on: Apr 21, 2016
- *      Author: piotr
- */
+#define VERBOSITY 4
+#if VERBOSITY == 4
+#include <iostream>
+using std:: cout;
+using std::endl;
+#endif
+
 #include "../../Incl/Utils/Deserializers/DataDeserializers/DataTypeDeserializer.hpp"
 #include "../../Incl/Utils/Deserializers/DataDeserializers/DataUnitDeserializer.hpp"
 #include "../../Incl/Utils/Deserializers/DataDeserializers/DataValueDeserializer.hpp"
@@ -21,12 +22,20 @@ TempData::convert(std::string desired_unit){
 
 void
 TempData::to_Kelvins(void){
-	if("C" == this->unit)	this->value = ZERO_CELSIUS_TO_KELVINS + this->value;
+	if("C" == this->unit)
+	{
+		this->value = ZERO_CELSIUS_TO_KELVINS + this->value;
+		this->unit = string("K");
+	}
 	else;
 }
 void
 TempData::to_Celsius(void){
-	if("K" == this->unit)	this->value = this->value - ZERO_CELSIUS_TO_KELVINS;
+	if("K" == this->unit)
+	{
+		this->value = this->value - ZERO_CELSIUS_TO_KELVINS;
+		this->unit = string("C");
+	}
 }
 
 
@@ -49,6 +58,11 @@ TempDataFactory::produceData(const string& serializedData)
 	data->value =	atoi(
 			ValueDeserializer.deserialize(serializedData)
 			.c_str());
+
+#if VERBOSITY == 4
+	cout << "\nProduced data:\n" << "Type = " << data->type << "\nUnit = " << data->unit << "\nValue = "
+			<< data->value << endl;
+#endif
 
 	return data;
 }

@@ -14,11 +14,11 @@ String_dict_deserializer::deserialize(const string& serialized_data)
 	size_t name_value_separator;
 	Adapter_param param;
 
-	name_value_separator = serialized_data.rfind("=");
+	name_value_separator = serialized_data.find("=");
 
 	param.param_name 	= serialized_data.substr(
 			0,
-			name_value_separator-1
+			name_value_separator
 			);
 
 	param.param_value 	= serialized_data.substr(

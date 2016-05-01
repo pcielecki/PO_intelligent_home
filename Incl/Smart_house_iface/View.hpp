@@ -17,16 +17,34 @@ using std::string;
 namespace Smart_house{
 
 class View : public MVA::MVA_View{
+	friend class ViewFactory;
 public:
+	static View* 		createView(const string& serializedParams);
 	virtual void 		update(string& serialized_params) const = 0 ;
 
 	unsigned int 		getViewID(void);
-	string			 	getCategory(void);
 
 
 private:
-	unsigned int 		viewID;
-	string			 	category;
+	string		 		viewID;
+};
+
+
+
+
+
+class ViewFactory{
+	friend class View;
+public:
+	virtual ~ViewFactory(){};
+
+protected:
+	virtual View* produceView(const string& serializedData) = 0;
+
+private:
+	static void InitializeView(View* view, const string& serializedParams);
+	static ViewFactory* GetViewFactory(const string& dataType);
+
 };
 
 };

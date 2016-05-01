@@ -27,9 +27,8 @@ public:
 	 string			getCategory(void);
 	 static Model* createModel(const string& serializedParams);
 
-private:
+protected:
 	string 			ID;
-	string		 	category;
 	string 			DeviceLibrary;
 
 

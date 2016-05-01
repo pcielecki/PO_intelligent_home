@@ -16,20 +16,9 @@
 using std::string;
 
 class DataDeserializer : public Deserializer{
-public:
-
-/* 	virtual std::string deserialize(const std::string& serialized_data) = 0;
-
- 	virtual ~DataDeserializer(){}
-
- 	void GetContentIndexes(const std::string& serialized_data, SerializedDataContents content_name);*/
 
 protected:
 	enum SerializedDataContents{DATATYPE, UNIT, VAL_n};
- /*	unsigned int ContentIterator;
- 	int ContentBeginningIndex, ContentEndIndex;
-
- 	static const size_t EqualSignOffset = 1;*/
 };
 
 

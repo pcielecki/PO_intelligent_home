@@ -23,6 +23,7 @@ using std::string;
 
 class Data
 {
+	friend class DataFactory;
 public:
 	static Data* deserializeAndCreate(const string& serialized_data);
 	virtual string serializeAndDestroy(void) = 0;

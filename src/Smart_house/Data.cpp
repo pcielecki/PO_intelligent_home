@@ -1,3 +1,8 @@
+#define VERBOSITY 4
+#if VERBOSITY == 4
+#include <iostream>
+#endif
+
 #include "../../Incl/Utils/SH_exceptions.hpp"
 #include "../../Incl/Datas/TempData.hpp"
 #include "../../Incl/Smart_house_iface/Data.hpp"

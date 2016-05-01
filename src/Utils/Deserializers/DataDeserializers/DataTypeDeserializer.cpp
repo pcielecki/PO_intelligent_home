@@ -4,7 +4,7 @@
  *  Created on: Apr 30, 2016
  *      Author: piotr
  */
-#include "../../../../Incl/Utils/Deserializers/Deserializer.hpp"
+#include <string>
 #include "../../../../Incl/Utils/Deserializers/DataDeserializers/DataTypeDeserializer.hpp"
 
 using std::string;

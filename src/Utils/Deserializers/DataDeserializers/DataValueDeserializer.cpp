@@ -5,9 +5,9 @@
  *      Author: piotr
  */
 
+#include <string>
 #include "../../../../Incl/Utils/Deserializers/DataDeserializers/DataValueDeserializer.hpp"
 
-#include <string>
 
 using std::string;
 

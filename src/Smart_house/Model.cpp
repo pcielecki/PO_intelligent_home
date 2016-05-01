@@ -39,9 +39,10 @@ Model::createModel(const string& serializedParams)
 	ModelFactory::InitializeModel(model, serializedParams);
 
 #if VERBOSITY >= 4
-	std::cout << "Created model: \nID =  "<< model->ID <<
-			"\ncategory = " << model->category <<
-			"\nLib = "<< model->DeviceLibrary << std::endl;
+	std::cout << 	"Created model: "<<
+					"\ncategory = " << model->category <<
+					"\nID =  "<< model->ID <<
+					"\nLib = "<< model->DeviceLibrary << std::endl;
 #endif
 
 	return model;

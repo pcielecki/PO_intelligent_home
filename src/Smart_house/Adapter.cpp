@@ -32,7 +32,6 @@ Adapter::getParamValue(string& param_name)
 	throw(new SH_Exceptions::StringEmptyException(param_name));
 }
 
-
 Adapter::~Adapter(void)
 {
 	Adapter_param* vector_element = this->adapter_param_vector.front();

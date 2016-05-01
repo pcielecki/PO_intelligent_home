@@ -4,9 +4,9 @@
  *  Created on: Apr 30, 2016
  *      Author: piotr
  */
-#include "../../../../Incl/Utils/Deserializers/Deserializer.hpp"
+#include <string>
 #include "../../../../Incl/Utils/Deserializers/ModelDeserializers/ModelCategoryDeserializer.hpp"
-#include <iostream>
+
 
 string
 ModelCategoryDeserializer::deserialize(const string& serialized_data)

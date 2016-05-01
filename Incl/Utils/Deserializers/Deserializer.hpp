@@ -23,7 +23,7 @@ public:
 
 protected:
  	unsigned int ContentIterator;
- 	int ContentBeginningIndex, ContentEndIndex;
+ 	int ContentBeginningIndex, ContentEndIndex, ContentLength;
 
  	static const size_t EqualSignOffset = 1;
 };

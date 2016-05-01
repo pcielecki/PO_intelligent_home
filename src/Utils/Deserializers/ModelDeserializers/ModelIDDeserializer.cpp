@@ -5,7 +5,7 @@
  *      Author: piotr
  */
 
-#include "../../../../Incl/Utils/Deserializers/Deserializer.hpp"
+#include <string>
 #include "../../../../Incl/Utils/Deserializers/ModelDeserializers/ModelIDDeserializer.hpp"
 
 string

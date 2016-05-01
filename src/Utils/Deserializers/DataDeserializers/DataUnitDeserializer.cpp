@@ -4,7 +4,7 @@
  *  Created on: Apr 30, 2016
  *      Author: piotr
  */
-
+#include <string>
 #include "../../../../Incl/Utils/Deserializers/DataDeserializers/DataUnitDeserializer.hpp"
 
 using std::string;

@@ -27,7 +27,7 @@ namespace Smart_house{
 class Adapter : public MVA::MVA_Adapter{
 	friend class AdapterFactory;
 public:
-	virtual string 				refresh(void) = 0;
+	virtual string 				refresh(const string& Parameters) = 0;
 
 	static Adapter* 			createAdapter(const string& serializedParams);
 

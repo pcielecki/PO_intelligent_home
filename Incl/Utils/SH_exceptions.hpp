@@ -28,13 +28,15 @@ private:
 	std::string string_name;
 };
 
-class DataTypeNotSupportedException{
+class NotSupportedException{
 public:
-	DataTypeNotSupportedException(const std::string& s)	{	this->dataTypeName = s;		}
-	std::string& getDataTypeName(void)					{	return this->dataTypeName;	}
+	NotSupportedException(const std::string& s)	{	this->Name = s;		}
+	std::string& getName(void)					{	return this->Name;	}
 private:
-	std::string dataTypeName;
+	std::string Name;
 };
+
+
 
 };
 

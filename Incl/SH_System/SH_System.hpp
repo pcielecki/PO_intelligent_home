@@ -18,7 +18,14 @@ using Smart_house::Adapter_param;
 using std::vector;
 
 class SH_System{
-	void ProcessLine(string& line);
+public:
+	void
+	ProcessLine(string& line);
+
+	Smart_house::Adapter* FindAdapterByView(const string& userID, const string& ViewID);
+	Smart_house::Adapter* FindAdapterByModel(const string& userID, const string& ViewID);
+
+
 private:
 	vector<Smart_house::Model*> 		MyModels;
 	vector<Smart_house::View*> 			MyViews;

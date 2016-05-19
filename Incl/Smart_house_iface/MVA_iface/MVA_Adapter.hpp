@@ -15,7 +15,7 @@ namespace MVA{
 
 class MVA_Adapter{
 public:
-	virtual string 	refresh(void) = 0;
+	virtual string 	refresh(const string& Parameters) = 0;
 
 	MVA_View* 		getView(void){return this->view;}
 	void			setView(MVA_View* v){this->view = v;}

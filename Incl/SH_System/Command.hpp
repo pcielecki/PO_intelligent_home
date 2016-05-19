@@ -20,6 +20,7 @@ class Command
 
 public:
 	virtual string Execute(string& parameters) = 0;
+	void SetSystem(SH_System* system);
 
 protected:
 	SH_System* system;
@@ -32,8 +33,6 @@ class CommandFactory
 public:
 	Command* ComposeCommand(string& params);
 
-private:
-	void CheckForValidity(const string& commandstring);
 };
 
 

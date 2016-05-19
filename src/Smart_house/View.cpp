@@ -44,7 +44,7 @@ ViewFactory::GetViewFactory(const string& viewType)
 		return new ConsoleFactory;
 
 	else
-		throw(new SH_Exceptions::DataTypeNotSupportedException(viewType));
+		throw(new SH_Exceptions::NotSupportedException(viewType));
 }
 
 void

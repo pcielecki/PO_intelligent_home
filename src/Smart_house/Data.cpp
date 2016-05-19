@@ -35,6 +35,6 @@ DataFactory::GetDataFactory(const string& dataType)
 
 
 	else
-		throw(new SH_Exceptions::DataTypeNotSupportedException(dataType));
+		throw(new SH_Exceptions::NotSupportedException(dataType));
 
 }

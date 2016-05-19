@@ -96,7 +96,7 @@ AdapterFactory::GetAdapterFactory(const string& adapterType)
 		return new ToDisplayAdapterFactory;
 
 	else
-		throw(new SH_Exceptions::DataTypeNotSupportedException(adapterType));
+		throw(new SH_Exceptions::NotSupportedException(adapterType));
 }
 
 void

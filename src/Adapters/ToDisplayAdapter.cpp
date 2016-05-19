@@ -12,7 +12,7 @@ using namespace std;
 
 
 string
-ToDisplayAdapter::refresh(void)
+ToDisplayAdapter::refresh(const string& params)
 {
 	string str_unit = string("unit");
 	this->desired_unit = this->getParamValue(str_unit);

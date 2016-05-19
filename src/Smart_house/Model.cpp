@@ -53,7 +53,7 @@ ModelFactory::GetModelFactory(const string& modelType)
 		return new DummyModelFactory;
 
 	else
-		throw(new SH_Exceptions::DataTypeNotSupportedException(modelType));
+		throw(new SH_Exceptions::NotSupportedException(modelType));
 }
 
 void

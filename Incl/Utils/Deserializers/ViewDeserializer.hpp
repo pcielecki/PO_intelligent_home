@@ -8,11 +8,19 @@
 #ifndef INCL_UTILS_DESERIALIZERS_VIEWDESERIALIZERS_VIEWDESERIALIZER_HPP_
 #define INCL_UTILS_DESERIALIZERS_VIEWDESERIALIZERS_VIEWDESERIALIZER_HPP_
 
-#include "../Deserializer.hpp"
+#include "Deserializer.hpp"
 
 class ViewDeserializer : public Deserializer{
-protected:
-	enum{CATEGORY, ID};
+
+public:
+	string getCategory(const string& serialized_params);
+	string getViewID(const string& serialized_params);
+
+
+private:
+	enum param_no{CATEGORY, ID};
+	param_no param_id;
+	string deserialize(const string& serializedParams);
 };
 
 

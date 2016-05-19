@@ -19,6 +19,7 @@
 #include "../../Incl/Smart_house_iface/Smart_house_defs.hpp"
 
 using std::string;
+
 using namespace Utils;
 
 namespace Smart_house{
@@ -26,7 +27,7 @@ namespace Smart_house{
 class Adapter : public MVA::MVA_Adapter{
 	friend class AdapterFactory;
 public:
-	virtual void 				refresh(void) = 0;
+	virtual string 				refresh(void) = 0;
 
 	static Adapter* 			createAdapter(const string& serializedParams);
 
@@ -47,6 +48,7 @@ protected:
 	View*						view;
 	virtual 					~Adapter(void);
 };
+
 
 
 class AdapterFactory{

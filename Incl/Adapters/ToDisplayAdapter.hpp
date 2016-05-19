@@ -18,7 +18,7 @@ using Smart_house::AdapterFactory;
 
 class ToDisplayAdapter : public Adapter{
 public:
-	void 				refresh(void);
+	string 				refresh(void);
 	void				setParam(string& serialized_param);
 
 private:

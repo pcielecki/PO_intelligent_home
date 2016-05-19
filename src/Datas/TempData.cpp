@@ -5,12 +5,11 @@ using std:: cout;
 using std::endl;
 #endif
 
-#include "../../Incl/Utils/Deserializers/DataDeserializers/DataTypeDeserializer.hpp"
-#include "../../Incl/Utils/Deserializers/DataDeserializers/DataUnitDeserializer.hpp"
-#include "../../Incl/Utils/Deserializers/DataDeserializers/DataValueDeserializer.hpp"
-#include "../../Incl/Datas/TempData.hpp"
 
 #include <cstdlib>
+#include "../../Incl/Utils/Deserializers/DataDeserializer.hpp"
+#include "../../Incl/Datas/TempData.hpp"
+
 
 void
 TempData::convert(std::string desired_unit){
@@ -47,16 +46,14 @@ Data*
 TempDataFactory::produceData(const string& serializedData)
 {
 	TempData* data = new TempData();
-	DataTypeDeserializer TypeDeserializer;
-	DataUnitDeserializer UnitDeserializer;
-	DataValueDeserializer ValueDeserializer;
+	DataDeserializer DDeserializer;
 
-	data->type = 	TypeDeserializer.deserialize(serializedData);
+	data->type = 	DDeserializer.GetDataType(serializedData);
 
-	data->unit = 	UnitDeserializer.deserialize(serializedData);
+	data->unit = 	DDeserializer.GetDataUnit(serializedData);
 
 	data->value =	atoi(
-			ValueDeserializer.deserialize(serializedData)
+			DDeserializer.GetDataValues(serializedData)
 			.c_str());
 
 #if VERBOSITY == 4

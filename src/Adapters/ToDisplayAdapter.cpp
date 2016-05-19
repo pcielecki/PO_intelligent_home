@@ -11,7 +11,7 @@ using namespace std;
 #include "../../Incl/Adapters/ToDisplayAdapter.hpp"
 
 
-void
+string
 ToDisplayAdapter::refresh(void)
 {
 	string str_unit = string("unit");
@@ -36,5 +36,5 @@ ToDisplayAdapter::refresh(void)
 	cout << "\nData serialized to:" << serialized_data << endl;
 #endif
 
-	this->view->update(	serialized_data	);
+	return this->view->update(	serialized_data	);
 }

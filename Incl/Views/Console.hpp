@@ -15,7 +15,7 @@ using std::string;
 using namespace Smart_house;
 
 class Console : public View{
-	void update(string& serialized_params) const;
+	string update(string& serialized_params) const;
 };
 
 class ConsoleFactory : public ViewFactory{

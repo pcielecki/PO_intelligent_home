@@ -11,14 +11,22 @@
 
 
 #include <string>
-#include "../Deserializer.hpp"
+#include "Deserializer.hpp"
 
 using std::string;
 
 class DataDeserializer : public Deserializer{
 
-protected:
+public:
+	string GetDataType(const string& serialized_data);
+	string GetDataUnit(const string& serialized_data);
+	string GetDataValues(const string& serialized_data);
+
+private:
+	string deserialize(const string& serialized_data);
+
 	enum SerializedDataContents{DATATYPE, UNIT, VAL_n};
+	SerializedDataContents current_content;
 };
 
 

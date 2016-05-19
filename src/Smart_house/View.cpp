@@ -4,8 +4,7 @@
 #endif
 
 #include "../../Incl/Utils/SH_exceptions.hpp"
-#include "../../Incl/Utils/Deserializers/ViewDeserializers/ViewCategoryDeserializer.hpp"
-#include "../../Incl/Utils/Deserializers/ViewDeserializers/ViewIDDeserializer.hpp"
+#include "../../Incl/Utils/Deserializers/ViewDeserializer.hpp"
 #include "../../Incl/Views/Console.hpp"
 #include "../../Incl/Smart_house_iface/View.hpp"
 
@@ -16,8 +15,8 @@ namespace Smart_house{
 View*
 View::createView(const string& serializedParams)
 {
-	ViewCategoryDeserializer catDes;
-	string category = catDes.deserialize(serializedParams);
+	ViewDeserializer VDes;
+	string category = VDes.getCategory(serializedParams);
 
 
 	ViewFactory* vf = ViewFactory::GetViewFactory(category);
@@ -51,9 +50,9 @@ ViewFactory::GetViewFactory(const string& viewType)
 void
 ViewFactory::InitializeView(View* view, const string& serializedParams)
 {
-	ViewIDDeserializer idDes;
+	ViewDeserializer VDes;
 
-	view->viewID = idDes.deserialize(serializedParams);
+	view->viewID = VDes.getViewID(serializedParams);
 }
 
 

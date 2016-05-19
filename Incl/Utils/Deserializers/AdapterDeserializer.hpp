@@ -8,11 +8,20 @@
 #ifndef INCL_UTILS_DESERIALIZERS_ADAPTERDESERIALIZERS_ADAPTERDESERIALIZER_HPP_
 #define INCL_UTILS_DESERIALIZERS_ADAPTERDESERIALIZERS_ADAPTERDESERIALIZER_HPP_
 
-#include "../Deserializer.hpp"
+#include "Deserializer.hpp"
 
 class AdapterDeserializer : public Deserializer{
+
+public:
+	string getOwnerID			(const string& serializedAdapterParams);
+	string getAdapterCategory	(const string& serializedAdapterParams);
+
 protected:
-	enum{CATEGORY, OWNERID};
+	enum adapterParamsNo{CATEGORY, OWNERID};
+
+private:
+	adapterParamsNo param_no;
+	string deserialize(const string& serializedAdapterParams);
 };
 
 

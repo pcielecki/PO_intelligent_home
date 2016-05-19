@@ -6,14 +6,18 @@
 
 using std::cout; using std:: endl;
 
-void
+string
 Console::update(string& serialized_params) const
 {
+
+string encapsulated = "serial 9600 8 N 1 | " + serialized_params;
+
 #if VERBOSITY == 4
-	cout << "View received: " << serialized_params << endl;
+	cout << "View " << this->viewID << " received: " << serialized_params << endl
+			<< "View " << this->viewID << " returned: " << encapsulated << endl;
 #endif
 
-	cout << serialized_params;
+	return encapsulated;
 }
 
 

@@ -13,10 +13,7 @@
 #include <iostream>
 #endif
 
-#include "../../Incl/Utils/Deserializers/ModelDeserializers/ModelCategoryDeserializer.hpp"
-#include "../../Incl/Utils/Deserializers/ModelDeserializers/ModelDeserializer.hpp"
-#include "../../Incl/Utils/Deserializers/ModelDeserializers/ModelIDDeserializer.hpp"
-#include "../../Incl/Utils/Deserializers/ModelDeserializers/ModelLibDeserializer.hpp"
+#include "../../Incl/Utils/Deserializers/ModelDeserializer.hpp"
 #include "../../Incl/Utils/SH_exceptions.hpp"
 #include "../../Incl/Models/Dummy_Model.hpp"
 #include "../../Incl/Smart_house_iface/Model.hpp"
@@ -28,8 +25,8 @@ namespace Smart_house{
 Model*
 Model::createModel(const string& serializedParams)
 {
-	ModelCategoryDeserializer catDes;
-	string category = catDes.deserialize(serializedParams);
+	ModelDeserializer MDes;
+	string category = MDes.GetCategory(serializedParams);
 
 	ModelFactory* mf = ModelFactory::GetModelFactory(category);
 
@@ -62,11 +59,10 @@ ModelFactory::GetModelFactory(const string& modelType)
 void
 ModelFactory::InitializeModel(Model* model, const string& serializedParams)
 {
-	ModelIDDeserializer idDes;
-	ModelLibDeserializer libDes;
+	ModelDeserializer Mdes;
 
-	model->ID = idDes.deserialize(serializedParams);
-	model->DeviceLibrary = libDes.deserialize((serializedParams));
+	model->ID = Mdes.GetID(serializedParams);
+	model->DeviceLibrary = Mdes.GetLibrary(serializedParams);
 }
 
 };

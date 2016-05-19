@@ -16,7 +16,7 @@ namespace MVA{
 
 class MVA_View{
 public:
-	virtual void update(string& serialized_params) const = 0;
+	virtual string update(string& serialized_params) const = 0;
 
 protected:
 	virtual ~MVA_View(void){}

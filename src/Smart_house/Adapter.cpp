@@ -4,8 +4,7 @@
 #endif
 #include <iterator>
 #include "../../Incl/Utils/SH_exceptions.hpp"
-#include "../../Incl/Utils/Deserializers/AdapterDeserializers/AdapterCategoryDeserializer.hpp"
-#include "../../Incl/Utils/Deserializers/AdapterDeserializers/AdapterOwnerIDDeserializer.hpp"
+#include "../../Incl/Utils/Deserializers/AdapterDeserializer.hpp"
 #include "../../Incl/Adapters/ToDisplayAdapter.hpp"
 #include "../../Incl/Utils/SH_exceptions.hpp"
 #include "../../Incl/Smart_house_iface/Adapter.hpp"
@@ -62,8 +61,8 @@ Adapter::~Adapter(void)
 Adapter*
 Adapter::createAdapter(const string& serializedParams)
 {
-	AdapterCategoryDeserializer catDes;
-	string category = catDes.deserialize(serializedParams);
+	AdapterDeserializer AdapterDes;
+	string category = AdapterDes.getAdapterCategory(serializedParams);
 
 	AdapterFactory* af = AdapterFactory::GetAdapterFactory(category);
 
@@ -103,9 +102,9 @@ AdapterFactory::GetAdapterFactory(const string& adapterType)
 void
 AdapterFactory::InitializeAdapter(Adapter* adapter, const string& serializedParams)
 {
-	AdapterOwnerIDDeserializer idDes;
+	AdapterDeserializer AdapterDes;
 
-	adapter->userID = idDes.deserialize(serializedParams);
+	adapter->userID = AdapterDes.getOwnerID(serializedParams);
 }
 
 

@@ -20,11 +20,9 @@ using std::vector;
 class SH_System{
 	void ProcessLine(string& line);
 private:
-	Command* CurrentCommand;
-
-	vector<Smart_house::Model*> MyModels;
-	vector<Smart_house::View*> MyViews;
-	vector<Smart_house::Adapter*> MyAdapters;
+	vector<Smart_house::Model*> 		MyModels;
+	vector<Smart_house::View*> 			MyViews;
+	vector<Smart_house::Adapter*> 		MyAdapters;
 
 	void ExtractCommandName(string& line);
 };

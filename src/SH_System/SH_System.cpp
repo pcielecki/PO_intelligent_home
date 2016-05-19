@@ -5,12 +5,13 @@ void
 SH_System::ProcessLine(string& line)
 {
 	CommandFactory cf;
+	Command* cmd;
 
-	this->CurrentCommand = cf.ComposeCommand(line);
+	cmd = cf.ComposeCommand(line);
 
 	this->ExtractCommandName(line);
 
-	this->CurrentCommand->Execute(line);
+	cmd->Execute(line);
 }
 
 void SH_System::ExtractCommandName(string& line)

@@ -8,6 +8,8 @@
 #ifndef INCL_COMMAND_HPP_
 #define INCL_COMMAND_HPP_
 
+
+#include <string>
 #include "SH_System.hpp"
 
 using std::string;
@@ -21,6 +23,7 @@ public:
 
 protected:
 	SH_System* system;
+
 	virtual ~Command(){}
 };
 

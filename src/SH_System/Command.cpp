@@ -1,5 +1,7 @@
+#include "../../Incl/SH_System/SH_System.hpp"
 #include "../../Incl/SH_System/Commands/CreateCommand.hpp"
 #include "../../Incl/SH_System/Command.hpp"
+
 
 Command*
 CommandFactory::ComposeCommand(string& params)

@@ -92,3 +92,44 @@ SH_System::FindAdapterByModel(const string& userID, const string& ViewID)
 	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
 }
 
+
+
+Smart_house::Model*
+SH_System::FindModelByID(const string& modelID)
+{
+	using Smart_house::Model;
+
+	vector<Model*>::iterator it = this->MyModels.begin();
+
+	while(this->MyModels.end() != it)
+	{
+		Model* m = *it;
+		if(	modelID == m->getModelID()	)
+			return m;
+
+		++it;
+	}
+
+	string exceptionmsg = "Model of ID: " + modelID + "not found!\n";
+	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
+}
+
+Smart_house::View*
+SH_System::FindViewByID(const string& viewID)
+{
+	using Smart_house::View;
+
+	vector<View*>::iterator it = this->MyViews.begin();
+
+	while(this->MyViews.end() != it)
+	{
+		View* v = *it;
+		if(viewID ==v->getViewID())
+			return v;
+
+		++it;
+	}
+
+	string exceptionmsg = "View of ID: " + viewID + "not found!\n";
+	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
+}

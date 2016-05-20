@@ -29,6 +29,13 @@ public:
 	Smart_house::Adapter*
 	FindAdapterByModel(const string& userID, const string& ViewID);
 
+	Smart_house::Model*
+	FindModelByID(const string& modelID);
+
+	Smart_house::View*
+	FindViewByID(const string& viewID);
+
+
 	vector<Smart_house::Model*>* GetModels(void)		{return &MyModels;}
 	vector<Smart_house::View*>* GetViews(void)			{return &MyViews;}
 	vector<Smart_house::Adapter*>* GetAdapters(void)	{return &MyAdapters;}

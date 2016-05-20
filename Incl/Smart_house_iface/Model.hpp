@@ -23,7 +23,7 @@ class Model : public MVA::MVA_Model{
 public:
 	virtual string	getData(void) = 0;
 
-	ID_t 			getModelID(void);
+	string 			getModelID(void);
 	 string			getCategory(void);
 	 static Model* createModel(const string& serializedParams);
 

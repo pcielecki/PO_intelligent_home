@@ -3,7 +3,7 @@
 string
 CreateCommandDeserializer::ExtractMVAType(string& serializedData)
 {
-	this->id = MVA_TYPE;
+	this->content_ID = (DefaultContentID)MVA_TYPE;
 
-	return this->ExtractMVAType(serializedData);
+	return this->ExtractContent(serializedData);
 }

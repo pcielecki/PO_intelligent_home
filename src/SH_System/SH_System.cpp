@@ -1,11 +1,12 @@
 #define VERBOSITY 4
 
-#if 4 == VERBOSITY
+#if 4 <= VERBOSITY
 #include <iostream>
 #endif
 
 #include <iterator>
 #include <string>
+#include "../../Incl/globals.hpp"
 #include "../../Incl/Utils/SH_exceptions.hpp"
 #include "../../Incl/Smart_house_iface/Adapter.hpp"
 #include "../../Incl/Smart_house_iface/Model.hpp"
@@ -27,8 +28,6 @@ SH_System::ProcessLine(string& line)
 	catch(			SH_Exceptions::NotSupportedException* e		)
 	{				this->OnCommandNotValid(e);			return;	}
 
-	cmddes.ExtractCommandName(line);
-
 	cmd->SetSystem(this);
 	cmd->Execute(line);
 }
@@ -36,7 +35,8 @@ SH_System::ProcessLine(string& line)
 void
 SH_System::OnCommandNotValid(SH_Exceptions::NotSupportedException* e)
 {
-	std::cout << "Invalid command: " << e->getName() << std::endl;
+	string msg = "Invalid command: " + e->getName();
+	systemlog.log(msg);
 
 	delete e;
 }
@@ -57,9 +57,11 @@ SH_System::FindAdapterByView(const string& userID, const string& ViewID)
 
 		if(userID == a->getOwner() && ViewID == v->getViewID())
 			return a;
+
+		++it;
 	}
 
-#if 4 == VERBOSITY
+#if 4 <= VERBOSITY
 	std::cout << "Found a " << userID << "Adapter of viewID = " << ViewID << std::endl;
 #endif
 
@@ -82,6 +84,8 @@ SH_System::FindAdapterByModel(const string& userID, const string& ViewID)
 
 		if(userID == a->getOwner() && ViewID == v->getViewID())
 			return a;
+
+		++it;
 	}
 
 	string exceptionmsg = "Adapter of " + userID + " and view " + ViewID + "not found!\n";

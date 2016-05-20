@@ -16,6 +16,8 @@ using std::string;
 
 class CreateCommand : public Command{
 public:
+	CreateCommand(void);
+
 	virtual string Execute(  string& params);
 };
 

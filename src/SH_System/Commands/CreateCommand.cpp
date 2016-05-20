@@ -1,3 +1,9 @@
+#define VERBOSITY 4
+
+#if 4 <= VERBOSITY
+#include <iostream>
+#endif
+
 #include "../../../Incl/Smart_house_iface/View.hpp"
 #include "../../../Incl/Smart_house_iface/Model.hpp"
 #include "../../../Incl/Smart_house_iface/Adapter.hpp"
@@ -6,7 +12,12 @@
 #include "../../../Incl/Utils/Deserializers/CreateCommandDeserializer.hpp"
 #include "../../../Incl/SH_System/Commands/CreateCommand.hpp"
 
-
+CreateCommand::CreateCommand(void)
+{
+#if 4 <= VERBOSITY
+	std::cout << "Obj of CreateCommand has been created\n";
+#endif
+}
 
 string
 CreateCommand::Execute(string& params)

@@ -47,6 +47,7 @@ CommandDeserializer::CheckFormat(const string& line)
 		default:
 			break;
 		}
+		++it;
 	}
 
 	if(END != state)
@@ -88,16 +89,18 @@ CommandDeserializer::ExtractContent(string& serialized_data)
 					);
 
 
-	string serialized_data1 	=	serialized_data.substr(
+	string s1 	=	serialized_data.substr(
 					0,
 					this->ContentBeginningIndex
 			);
 
 
-	string serialized_data2 =		serialized_data.substr(
-				this->ContentEndIndex,
-				-1
+	string s2 =		serialized_data.substr(
+				this->ContentEndIndex+2,
+				string::npos
 			);
+
+	serialized_data = s1 + s2;
 
 #if 4 == VERBOSITY
 

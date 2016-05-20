@@ -13,6 +13,9 @@
 using std::string;
 
 class RemoveCommand : public Command{
+public:
+	RemoveCommand(void);
+
 	string Execute(  string& params);
 };
 

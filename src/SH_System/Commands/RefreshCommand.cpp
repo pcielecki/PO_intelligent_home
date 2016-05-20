@@ -1,6 +1,15 @@
+#define VERBOSITY 4
+
 #include "../../../Incl/Smart_house_iface/Adapter.hpp"
 #include "../../../Incl/SH_System/SH_System.hpp"
 #include "../../../Incl/SH_System/Commands/RefreshCommand.hpp"
+
+RefreshCommand::RefreshCommand(void)
+{
+#if 4 <= VERBOSITY
+	std::cout << "Obj of RefreshCommand has been created\n";
+#endif
+}
 
 string
 RefreshCommand::Execute(string& params)

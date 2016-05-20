@@ -18,7 +18,6 @@ public:
 
 private:
 	enum CreateCommandContentID {MVA_TYPE};
-	CreateCommandContentID id;
 };
 
 

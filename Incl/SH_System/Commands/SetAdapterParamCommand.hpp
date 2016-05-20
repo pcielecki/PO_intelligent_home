@@ -14,6 +14,9 @@ using std::string;
 
 
 class SetAdapterParamCommand : public Command{
+public:
+	SetAdapterParamCommand(void);
+
 	string Execute(  string& params);
 };
 

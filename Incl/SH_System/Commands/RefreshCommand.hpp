@@ -11,6 +11,9 @@
 #include "../Command.hpp"
 
 class RefreshCommand : public Command{
+public:
+	RefreshCommand(void);
+
 	virtual string Execute(string& params);
 };
 

@@ -20,9 +20,9 @@ public:
 protected:
 	string ExtractContent(string& serialized_data);
 
-private:
-	enum contentID {NAME, PARAMS};
-	contentID content_ID;
+protected:
+	enum DefaultContentID {NAME, PARAMS};
+	DefaultContentID content_ID;
 
 	void CheckFormat(const string& line);
 

@@ -21,11 +21,15 @@ class Command
 public:
 	virtual string Execute(string& parameters) = 0;
 	void SetSystem(SH_System* system);
+	string GetHelp(void)		{return HelpText;}
 
 protected:
 	SH_System* system;
 
 	virtual ~Command(){}
+
+private:
+	string HelpText;
 };
 
 class CommandFactory

@@ -1,10 +1,9 @@
-/*
- * SetAdapterParamCommand.cpp
- *
- *  Created on: May 19, 2016
- *      Author: piotr
- */
+#include "../../../Incl/SH_System/Commands/SetAdapterParamCommand.hpp"
 
+using std::string;
 
-
-
+string
+SetAdapterParamCommand::Execute(string& params)
+{
+	throw "NOT implemented!";
+}

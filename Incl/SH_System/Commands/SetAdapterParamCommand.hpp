@@ -8,7 +8,7 @@
 #ifndef SH_SYSTEM_COMMANDS_SETADAPTERPARAMCOMMAND_HPP_
 #define SH_SYSTEM_COMMANDS_SETADAPTERPARAMCOMMAND_HPP_
 
-#include "Command.hpp"
+#include "../Command.hpp"
 
 using std::string;
 

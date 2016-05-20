@@ -22,7 +22,7 @@ public:
 	static View* 		createView(const string& serializedParams);
 	virtual string 		update(string& serialized_params) const = 0 ;
 
-	unsigned int 		getViewID(void);
+	string		 		getViewID(void){return this->viewID;}
 
 
 protected:

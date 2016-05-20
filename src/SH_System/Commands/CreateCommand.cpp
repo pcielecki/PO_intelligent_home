@@ -1,23 +1,32 @@
+#include "../../../Incl/Smart_house_iface/View.hpp"
+#include "../../../Incl/Smart_house_iface/Model.hpp"
+#include "../../../Incl/Smart_house_iface/Adapter.hpp"
 #include "../../../Incl/SH_System/SH_System.hpp"
+#include "../../../Incl/Utils/SH_exceptions.hpp"
+#include "../../../Incl/Utils/Deserializers/CreateCommandDeserializer.hpp"
 #include "../../../Incl/SH_System/Commands/CreateCommand.hpp"
 
-void
-CreateCommand::SetSystem(SH_System* system)
-{
-	this->system = system;
-}
+
 
 string
 CreateCommand::Execute(string& params)
 {
-	string MVA_element = this->ExtractType(params);
+	CreateCommandDeserializer des;
+	SH_System* s = this->system;
+	string MVA_element = des.ExtractMVAType(params);
 
-		throw 0;
+	if("Model" == MVA_element)
+		s->GetModels()->push_back(		Smart_house::Model::createModel(params)		);
+
+	else if("View" == MVA_element)
+		s->GetViews()->push_back(		Smart_house::View::createView(params)		);
+
+	else if("Adapter" == MVA_element)
+		s->GetAdapters()->push_back(	Smart_house::Adapter::createAdapter(params)	);
+
+	else
+		throw new SH_Exceptions::NotSupportedException(MVA_element);
 
 	return "";
-}
 
-string CreateCommand::ExtractType(string& params)
-{
-	return params;
 }

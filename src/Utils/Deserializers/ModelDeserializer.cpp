@@ -6,7 +6,7 @@
  */
 
 #include <string>
-#include "../../../../Incl/Utils/Deserializers/ModelDeserializer.hpp"
+#include "../../../Incl/Utils/Deserializers/ModelDeserializer.hpp"
 
 string ModelDeserializer::GetCategory(const string& serializedParams)
 {

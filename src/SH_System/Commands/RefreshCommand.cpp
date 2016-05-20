@@ -5,8 +5,8 @@
 string
 RefreshCommand::Execute(string& params)
 {
-	const string UserID = "";
-	const string ViewID = "";
+	string UserID = "";
+	string ViewID = "";
 	string OptionalParameters;
 
 	SH_System* system = this->system;

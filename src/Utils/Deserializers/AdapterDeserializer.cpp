@@ -7,7 +7,7 @@
 
 
 #include <string>
-#include "../../../../Incl/Utils/Deserializers/AdapterDeserializer.hpp"
+#include "../../../Incl/Utils/Deserializers/AdapterDeserializer.hpp"
 
 
 string AdapterDeserializer::getOwnerID(const string& serializedAdapterParams)

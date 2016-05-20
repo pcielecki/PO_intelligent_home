@@ -9,6 +9,7 @@
 #define INCL_SH_SYSTEM_HPP_
 
 #include <vector>
+#include "../Utils/SH_exceptions.hpp"
 #include "../Smart_house_iface/Adapter.hpp"
 #include "../Smart_house_iface/Model.hpp"
 #include "../Smart_house_iface/View.hpp"
@@ -22,16 +23,23 @@ public:
 	void
 	ProcessLine(string& line);
 
-	Smart_house::Adapter* FindAdapterByView(const string& userID, const string& ViewID);
-	Smart_house::Adapter* FindAdapterByModel(const string& userID, const string& ViewID);
+	Smart_house::Adapter*
+	FindAdapterByView(const string& userID, const string& ViewID);
 
+	Smart_house::Adapter*
+	FindAdapterByModel(const string& userID, const string& ViewID);
+
+	vector<Smart_house::Model*>* GetModels(void)		{return &MyModels;}
+	vector<Smart_house::View*>* GetViews(void)			{return &MyViews;}
+	vector<Smart_house::Adapter*>* GetAdapters(void)	{return &MyAdapters;}
 
 private:
 	vector<Smart_house::Model*> 		MyModels;
 	vector<Smart_house::View*> 			MyViews;
 	vector<Smart_house::Adapter*> 		MyAdapters;
 
-	void ExtractCommandName(string& line);
+	void OnCommandNotValid(SH_Exceptions::NotSupportedException* e);
+
 };
 
 

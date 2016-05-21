@@ -1,4 +1,4 @@
-
+#include "../../../Incl/globals.hpp"
 #include "../../../Incl/SH_System/Commands/RemoveCommand.hpp"
 
 using std::string;

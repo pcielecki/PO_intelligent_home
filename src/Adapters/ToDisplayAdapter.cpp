@@ -1,11 +1,10 @@
-#define VERBOSITY 4
+#include <cstdlib>
+#include <string>
+#include "../../Incl/globals.hpp"
 #if VERBOSITY == 4
 #include <iostream>
 using namespace std;
 #endif
-
-#include <cstdlib>
-#include <string>
 #include "../../Incl/Smart_house_iface/Data.hpp"
 #include "../../Incl/Utils/Deserializers/String_dict_deserializer.hpp"
 #include "../../Incl/Adapters/ToDisplayAdapter.hpp"

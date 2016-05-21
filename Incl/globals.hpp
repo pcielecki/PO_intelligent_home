@@ -8,6 +8,8 @@
 #ifndef INCL_GLOBALS_HPP_
 #define INCL_GLOBALS_HPP_
 
+#define VERBOSITY 4
+
 #include "Utils/SystemLog.hpp"
 
 extern SystemLog systemlog;

@@ -1,5 +1,4 @@
-#define VERBOSITY 4
-
+#include "../../Incl/globals.hpp"
 #if 4 <= VERBOSITY
 #include <iostream>
 #endif
@@ -8,6 +7,7 @@
 #include <string>
 #include "../../Incl/globals.hpp"
 #include "../../Incl/Utils/SH_exceptions.hpp"
+#include "../../Incl/Utils/ExceptionsSafe.hpp"
 #include "../../Incl/Smart_house_iface/Adapter.hpp"
 #include "../../Incl/Smart_house_iface/Model.hpp"
 #include "../../Incl/Smart_house_iface/View.hpp"
@@ -20,29 +20,35 @@ SH_System::ProcessLine(string& line)
 {
 	CommandDeserializer cmddes;
 	CommandFactory cf;
-	Command* cmd;
+	ExceptionSafe cmd;
 
 #if 4 <= VERBOSITY
 	std::cout << "Got line: " << line << std::endl;
 #endif
 
-	try{	cmddes.CheckForValidityAndFormat(line);		cmd = cf.ComposeCommand(line);				}
-	catch(			SH_Exceptions::NotSupportedException* e		)
-	{				this->OnCommandNotValid(e);			return;	}
-	catch(			SH_Exceptions::StringEmptyException* e		)
-	{	std::cout << "bad formatting\n"; }
+	try{
+		cmddes.CheckForValidityAndFormat(line);
+		cmd.objptr = cf.ComposeCommand(line);
+	}
+	catch(			SH_Exceptions::NotSupportedException* e		){
+		this->OnCommandNotValid(e->getName());
+		delete e;
+		return;
+	}
+	catch(			SH_Exceptions::StringEmptyException* e		){
+		this->OnCommandNotValid(e->getStringName());
+		delete e;
+	}
 
-	cmd->SetSystem(this);
-	cmd->Execute(line);
+	((Command*)cmd.objptr)->SetSystem(this);
+	((Command*)cmd.objptr)->Execute(line);
 }
 
 void
-SH_System::OnCommandNotValid(SH_Exceptions::NotSupportedException* e)
+SH_System::OnCommandNotValid(string wrongcmd)
 {
-	string msg = "Invalid command: " + e->getName();
-	systemlog.log(msg);
-
-	delete e;
+	string msg = "Invalid command: " + wrongcmd;
+	systemlog.log(wrongcmd);
 }
 
 
@@ -95,13 +101,9 @@ SH_System::FindFirstDanglingAdapter(const string& userID)
 
 #endif
 	return a;
-
 		}
-
 		++it;
 	}
-
-
 
 	string exceptionmsg = "No dangling adapters for user " + userID + "\n";
 	throw new SH_Exceptions::StringEmptyException(exceptionmsg);

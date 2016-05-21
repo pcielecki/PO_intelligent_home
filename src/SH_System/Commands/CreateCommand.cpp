@@ -1,4 +1,4 @@
-#define VERBOSITY 4
+#include "../../../Incl/globals.hpp"
 
 #if 4 <= VERBOSITY
 #include <iostream>

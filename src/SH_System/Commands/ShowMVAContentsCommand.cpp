@@ -1,4 +1,4 @@
-#define VERBOSITY 4
+#include "../../../Incl/globals.hpp"
 #include <iostream>
 #include "../../../Incl/SH_System/SH_System.hpp"
 #include "../../../Incl/SH_System/Commands/ShowMVAContentsCommand.hpp"

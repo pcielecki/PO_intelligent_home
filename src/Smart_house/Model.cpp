@@ -7,7 +7,7 @@
  *  Created on: Apr 30, 2016
  *      Author: piotr
  */
-#define VERBOSITY 4
+#include "../../Incl/globals.hpp"
 
 #if VERBOSITY >= 4
 #include <iostream>

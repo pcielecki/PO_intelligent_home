@@ -9,7 +9,6 @@
 #define INCL_SH_SYSTEM_HPP_
 
 #include <vector>
-#include "../Utils/SH_exceptions.hpp"
 #include "../Smart_house_iface/Adapter.hpp"
 #include "../Smart_house_iface/Model.hpp"
 #include "../Smart_house_iface/View.hpp"
@@ -48,7 +47,7 @@ private:
 	vector<Smart_house::View*> 			MyViews;
 	vector<Smart_house::Adapter*> 		MyAdapters;
 
-	void OnCommandNotValid(SH_Exceptions::NotSupportedException* e);
+	void OnCommandNotValid(string wrongcmd);
 
 };
 

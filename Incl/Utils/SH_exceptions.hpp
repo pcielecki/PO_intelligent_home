@@ -18,7 +18,7 @@ class StringEmptyException{
 public:
 	StringEmptyException(const std::string& EmptyStringName)
 	{
-		this->string_name = EmptyStringName;
+		this->string_name = EmptyStringName + " not supported yet!\n";
 	}
 	StringEmptyException(void){}
 

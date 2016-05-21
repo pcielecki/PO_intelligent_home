@@ -1,4 +1,4 @@
-#define VERBOSITY 4
+#include "../../../Incl/globals.hpp"
 
 
 #if 4 == VERBOSITY
@@ -50,8 +50,10 @@ CommandDeserializer::CheckFormat(const string& line)
 		++it;
 	}
 
-	if(END != state)
-		throw new SH_Exceptions::StringEmptyException(line);
+	if(END != state){
+		throw new SH_Exceptions::StringEmptyException("Wrong formatting!\n");
+	}
+
 }
 
 void

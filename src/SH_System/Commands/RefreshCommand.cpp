@@ -1,4 +1,4 @@
-#define VERBOSITY 4
+#include "../../../Incl/globals.hpp"
 
 #include "../../../Incl/Smart_house_iface/Adapter.hpp"
 #include "../../../Incl/SH_System/SH_System.hpp"

@@ -29,6 +29,9 @@ public:
 	Smart_house::Adapter*
 	FindAdapterByModel(const string& userID, const string& ViewID);
 
+	Smart_house::Adapter*
+	FindFirstDanglingAdapter(const string& userID);
+
 	Smart_house::Model*
 	FindModelByID(const string& modelID);
 

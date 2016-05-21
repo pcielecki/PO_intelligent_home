@@ -51,7 +51,7 @@ CommandDeserializer::CheckFormat(const string& line)
 	}
 
 	if(END != state)
-		throw new SH_Exceptions::NotSupportedException(line);
+		throw new SH_Exceptions::StringEmptyException(line);
 }
 
 void

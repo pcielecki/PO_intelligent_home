@@ -23,12 +23,13 @@ class Model : public MVA::MVA_Model{
 public:
 	virtual string	getData(void) = 0;
 
-	string 			getModelID(void);
-	 string			getCategory(void);
+	string 			getModelID(void){return this->ID;}
+	 string			getCategory(void){return this->category;}
 	 static Model* createModel(const string& serializedParams);
 
 protected:
 	string 			ID;
+	string			category;
 	string 			DeviceLibrary;
 
 

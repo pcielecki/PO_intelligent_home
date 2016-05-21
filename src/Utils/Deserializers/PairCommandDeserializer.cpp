@@ -3,16 +3,16 @@
 string
 PairCommandDeserializer::ExtractModelID(string& cmd)
 {
-	this->content_ID = (DefaultContentID)ModelID;
+	this->content_ID = (DefaultContentID)ViewID;
 
 	return this->ExtractContent(cmd);
 }
 
 
 string
-PairCommandDeserializer::ExtractAdapterID(string& cmd)
+PairCommandDeserializer::ExtractUserID(string& cmd)
 {
-	this->content_ID = (DefaultContentID)ModelID;
+	this->content_ID = (DefaultContentID)ViewID;
 
 	return this->ExtractContent(cmd);
 }

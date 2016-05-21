@@ -17,7 +17,7 @@ public:
 	string getAdapterCategory	(const string& serializedAdapterParams);
 
 protected:
-	enum adapterParamsNo{CATEGORY, OWNERID};
+	enum adapterParamsNo{OWNERID, CATEGORY};
 
 private:
 	adapterParamsNo param_no;

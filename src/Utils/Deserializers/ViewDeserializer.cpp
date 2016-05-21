@@ -27,7 +27,7 @@ ViewDeserializer::getViewID(const string& serialized_params)
 string
 ViewDeserializer::deserialize(const string& serialized_data)
 {
-	Deserializer::GetContentIndexes(serialized_data, CATEGORY);
+	Deserializer::GetContentIndexes(serialized_data, this->param_id);
 
 	string viewcat 	= serialized_data.substr(
 			this->ContentBeginningIndex,

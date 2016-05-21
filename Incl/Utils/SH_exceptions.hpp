@@ -16,7 +16,7 @@ namespace SH_Exceptions{
 
 class StringEmptyException{
 public:
-	StringEmptyException(std::string& EmptyStringName)
+	StringEmptyException(const std::string& EmptyStringName)
 	{
 		this->string_name = EmptyStringName;
 	}

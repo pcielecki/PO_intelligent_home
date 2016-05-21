@@ -105,6 +105,9 @@ AdapterFactory::InitializeAdapter(Adapter* adapter, const string& serializedPara
 	AdapterDeserializer AdapterDes;
 
 	adapter->userID = AdapterDes.getOwnerID(serializedParams);
+
+	adapter->model = NULL;
+	adapter->view = NULL;
 }
 
 

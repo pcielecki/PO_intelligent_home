@@ -22,11 +22,15 @@ SH_System::ProcessLine(string& line)
 	CommandFactory cf;
 	Command* cmd;
 
-	cmddes.CheckForValidityAndFormat(line);
+#if 4 <= VERBOSITY
+	std::cout << "Got line: " << line << std::endl;
+#endif
 
-	try{			cmd = cf.ComposeCommand(line);				}
+	try{	cmddes.CheckForValidityAndFormat(line);		cmd = cf.ComposeCommand(line);				}
 	catch(			SH_Exceptions::NotSupportedException* e		)
 	{				this->OnCommandNotValid(e);			return;	}
+	catch(			SH_Exceptions::StringEmptyException* e		)
+	{	std::cout << "bad formatting\n"; }
 
 	cmd->SetSystem(this);
 	cmd->Execute(line);
@@ -65,15 +69,16 @@ SH_System::FindAdapterByView(const string& userID, const string& ViewID)
 	std::cout << "Found a " << userID << "Adapter of viewID = " << ViewID << std::endl;
 #endif
 
-	string exceptionmsg = "Adapter of " + userID + " and view " + ViewID + "not found!\n";
+	string exceptionmsg = "Adapter of " + userID + " and view " + ViewID + " not found!\n";
 	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
 }
 
 Smart_house::Adapter*
-SH_System::FindAdapterByModel(const string& userID, const string& ViewID)
+SH_System::FindFirstDanglingAdapter(const string& userID)
 {
 	using Smart_house::Adapter;
 	using Smart_house::View;
+	using Smart_house::Model;
 
 	vector<Adapter*>::iterator it = this->MyAdapters.begin();
 
@@ -81,14 +86,47 @@ SH_System::FindAdapterByModel(const string& userID, const string& ViewID)
 	{
 		Adapter* a = *it;
 		View* v = (View*)(*it)->getView();
+		Model* m = (Model*)(*it)->getModel();
 
-		if(userID == a->getOwner() && ViewID == v->getViewID())
+		if(userID == a->getOwner() && NULL == v && NULL == m)
+		{
+#if 4 <= VERBOSITY
+	std::cout << "Found a " << userID << " dangling Adapter" << std::endl;
+
+#endif
+	return a;
+
+		}
+
+		++it;
+	}
+
+
+
+	string exceptionmsg = "No dangling adapters for user " + userID + "\n";
+	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
+}
+
+Smart_house::Adapter*
+SH_System::FindAdapterByModel(const string& userID, const string& ModelID)
+{
+	using Smart_house::Adapter;
+	using Smart_house::Model;
+
+	vector<Adapter*>::iterator it = this->MyAdapters.begin();
+
+	while(this->MyAdapters.end() != it)
+	{
+		Adapter* a = *it;
+		Model* v = (Model*)(*it)->getView();
+
+		if(userID == a->getOwner() && ModelID == v->getModelID())
 			return a;
 
 		++it;
 	}
 
-	string exceptionmsg = "Adapter of " + userID + " and view " + ViewID + "not found!\n";
+	string exceptionmsg = "Adapter of " + userID + " and model " + ModelID + " not found!\n";
 	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
 }
 
@@ -110,7 +148,7 @@ SH_System::FindModelByID(const string& modelID)
 		++it;
 	}
 
-	string exceptionmsg = "Model of ID: " + modelID + "not found!\n";
+	string exceptionmsg = "Model of ID: " + modelID + " not found!\n";
 	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
 }
 
@@ -130,6 +168,6 @@ SH_System::FindViewByID(const string& viewID)
 		++it;
 	}
 
-	string exceptionmsg = "View of ID: " + viewID + "not found!\n";
+	string exceptionmsg = "View of ID: " + viewID + " not found!\n";
 	throw new SH_Exceptions::StringEmptyException(exceptionmsg);
 }

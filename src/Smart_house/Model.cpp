@@ -62,6 +62,7 @@ ModelFactory::InitializeModel(Model* model, const string& serializedParams)
 	ModelDeserializer Mdes;
 
 	model->ID = Mdes.GetID(serializedParams);
+	model->category = Mdes.GetCategory(serializedParams);
 	model->DeviceLibrary = Mdes.GetLibrary(serializedParams);
 }
 

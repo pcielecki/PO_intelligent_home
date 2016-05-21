@@ -12,6 +12,8 @@
 
 class PairCommand : public Command{
 public:
+	PairCommand(void);
+
 	virtual string Execute(string& cmd);
 
 

@@ -20,10 +20,10 @@ public:
 
 	string ExtractModelID(string& cmd);
 
-	string ExtractAdapterID(string& cmd);
+	string ExtractUserID(string& cmd);
 
 private:
-	enum PairIDs {ViewID, ModelID, AdapterID};
+	enum PairIDs {ViewID, ModelID, UserID};
 };
 
 

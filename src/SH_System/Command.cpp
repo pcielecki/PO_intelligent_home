@@ -6,6 +6,7 @@
 #include "../../Incl/SH_System/SH_System.hpp"
 #include "../../Incl/Utils/SH_exceptions.hpp"
 #include "../../Incl/Utils/Deserializers/CommandDeserializer.hpp"
+#include "../../Incl/Utils/DLL_Loader.hpp"
 #include "../../Incl/SH_System/Command.hpp"
 #include "../../Incl/SH_System/Commands/CreateCommand.hpp"
 #include "../../Incl/SH_System/Commands/SetAdapterParamCommand.hpp"
@@ -33,6 +34,12 @@ CommandFactory::ComposeCommand(string& params)
 	else if	("SetParam" == CommandName)	return new SetAdapterParamCommand;
 	else if	("Pair"		== CommandName)	return new PairCommand;
 	else if	("ShowMVA"	== CommandName)	return new ShowMVAContentsCommand;
+	else if	("DummyCommand" == CommandName)
+	{
+		DLL_Loader d = DLL_Loader("libDummyCommand.so", "GetInstance");
+		return d.GetInstance();
+	}
+
 	else
 		throw new SH_Exceptions::NotSupportedException(CommandName);
 

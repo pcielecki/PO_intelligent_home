@@ -12,7 +12,8 @@
 
 #include "Utils/SystemLog.hpp"
 
-extern SystemLog systemlog;
+extern SystemLog errorlog;
+extern SystemLog recoverylog;
 
 
 

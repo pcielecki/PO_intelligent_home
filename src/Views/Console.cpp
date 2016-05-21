@@ -7,7 +7,7 @@
 using std::cout; using std:: endl;
 
 string
-Console::update(string& serialized_params) const
+Console::update(string& serialized_params)
 {
 
 string encapsulated = "serial 9600 8 N 1 | " + serialized_params;

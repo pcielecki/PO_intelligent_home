@@ -4,6 +4,8 @@
 #include <iostream>
 using std::string;
 
+
+
 void
 SystemLog::log(const string& line)
 {

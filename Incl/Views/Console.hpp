@@ -15,11 +15,11 @@ using std::string;
 using namespace Smart_house;
 
 class Console : public View{
-	string update(string& serialized_params) const;
+	string update(string& serialized_params);
 };
 
 class ConsoleFactory : public ViewFactory{
-	virtual View* produceView(const string& serializedData)
+	View* produceView(const string& serializedData)
 	{
 		return new Console;
 	}

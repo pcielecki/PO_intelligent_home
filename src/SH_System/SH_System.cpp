@@ -48,7 +48,7 @@ void
 SH_System::OnCommandNotValid(string wrongcmd)
 {
 	string msg = "Invalid command: " + wrongcmd;
-	systemlog.log(wrongcmd);
+	errorlog.log(wrongcmd);
 }
 
 

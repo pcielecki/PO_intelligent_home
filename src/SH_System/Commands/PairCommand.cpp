@@ -57,7 +57,7 @@ std::cout << "Paired Model:" << modelID << "with view: " << viewID << " for user
 	}
 	catch(SH_Exceptions::StringEmptyException* e)
 	{
-		systemlog.log(e->getStringName());
+		errorlog.log(e->getStringName());
 	}
 
 

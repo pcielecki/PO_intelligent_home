@@ -13,6 +13,7 @@
 #include <memory>
 #include "Model.hpp"
 #include "View.hpp"
+#include "../../Incl/globals.hpp"
 #include "../../Incl/Smart_house_iface/Adapter_param.hpp"
 #include "../../Incl/Utils/Deserializers/String_dict_deserializer.hpp"
 #include "../../Incl/Smart_house_iface/MVA_iface/MVA_Adapter.hpp"
@@ -38,8 +39,6 @@ public:
 	void						setOwner(string ownerID){this->userID = ownerID;}
 
 	void						pair(Model* m, View* v);
-
-
 
 protected:
 	string 						userID;

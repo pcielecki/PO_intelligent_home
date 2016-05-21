@@ -20,7 +20,7 @@ class View : public MVA::MVA_View{
 	friend class ViewFactory;
 public:
 	static View* 		createView(const string& serializedParams);
-	virtual string 		update(string& serialized_params) const = 0 ;
+	virtual string 		update(string& serialized_params) = 0 ;
 
 	string		 		getViewID(void){return this->viewID;}
 

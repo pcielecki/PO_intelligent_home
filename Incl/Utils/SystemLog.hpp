@@ -16,6 +16,7 @@ class SystemLog
 {
 
 public:
+	SystemLog(string path){this->path = path;}
 	void log(const string& line);
 
 private:

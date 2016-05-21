@@ -44,11 +44,16 @@ PairCommand::Execute(string& cmd)
 std::cout << "Command re-formed to: " << crtcmdparams << std::endl;
 #endif
 
+	crtcmd.SetSystem(this->system);
 	(void)crtcmd.Execute(crtcmdparams);
 
 	Adapter* a	= this->system->FindFirstDanglingAdapter(userID);
 
 	a->pair(m ,v);
+
+#if 4 <= VERBOSITY
+std::cout << "Paired Model:" << modelID << "with view: " << viewID << " for user " << userID <<std::endl;
+#endif
 	}
 	catch(SH_Exceptions::StringEmptyException* e)
 	{
@@ -56,8 +61,6 @@ std::cout << "Command re-formed to: " << crtcmdparams << std::endl;
 	}
 
 
-#if 4 <= VERBOSITY
-std::cout << "Paired Model:" << modelID << "with view: " << viewID << " for user " << userID <<std::endl;
-#endif
+
 	return "";
 }

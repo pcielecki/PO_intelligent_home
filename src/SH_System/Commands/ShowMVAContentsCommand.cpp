@@ -40,7 +40,10 @@ ShowMVAContentsCommand::Execute(string& cmd)
 	cout << "Adapters:\n";
 	while(ita != s->GetAdapters()->end())
 	{
-		cout << (*ita)->getOwner() << "\t" << (*ita)->getModel() << "\t" << (*ita)->getView() << endl;
+		Smart_house::Model* m= (Smart_house::Model*)(*ita)->getModel();
+		Smart_house::View* v = (Smart_house::View*)(*ita)->getView();
+
+		cout << (*ita)->getOwner() << "\t" << m->getModelID() << "\t" << v->getViewID() << endl;
 		++ita;
 	}
 

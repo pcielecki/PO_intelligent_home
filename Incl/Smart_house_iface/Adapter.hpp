@@ -44,8 +44,6 @@ public:
 protected:
 	string 						userID;
 	std::vector<Adapter_param*>	adapter_param_vector;
-	Model*						model;
-	View*						view;
 	virtual 					~Adapter(void);
 };
 

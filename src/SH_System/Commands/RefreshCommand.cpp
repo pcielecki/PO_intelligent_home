@@ -2,6 +2,7 @@
 
 #include "../../../Incl/Smart_house_iface/Adapter.hpp"
 #include "../../../Incl/SH_System/SH_System.hpp"
+#include "../../../Incl/Utils/Deserializers/RefreshCommandDeserializer.hpp"
 #include "../../../Incl/SH_System/Commands/RefreshCommand.hpp"
 
 RefreshCommand::RefreshCommand(void)
@@ -14,13 +15,16 @@ RefreshCommand::RefreshCommand(void)
 string
 RefreshCommand::Execute(string& params)
 {
-	string UserID = "";
-	string ViewID = "";
-	string OptionalParameters;
+	RefreshCommandDeserializer des;
+	string UserID = des.ExtractUserID(params);
+	string ViewID = des.ExtractViewID(params);
 
-	SH_System* system = this->system;
+	string OptionalParameters = params;
 
-	Smart_house::Adapter* a = system->FindAdapterByView(UserID, ViewID);
+	SH_System* s = this->system;
+
+	Smart_house::Adapter* a = s->FindAdapterByView(UserID, ViewID);
+
 
 	return a->refresh(OptionalParameters);
 

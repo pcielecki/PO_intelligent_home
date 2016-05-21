@@ -29,14 +29,23 @@ CreateCommand::Execute(string& params)
 	if("Model" == MVA_element)
 		s->GetModels()->push_back(		Smart_house::Model::createModel(params)		);
 
+	else if("Adapter" == MVA_element)
+	{
+		s->GetAdapters()->push_back(	 Smart_house::Adapter::createAdapter(params)	);
+
+	}
+
 	else if("View" == MVA_element)
 		s->GetViews()->push_back(		Smart_house::View::createView(params)		);
 
-	else if("Adapter" == MVA_element)
-		s->GetAdapters()->push_back(	Smart_house::Adapter::createAdapter(params)	);
+
 
 	else
 		throw new SH_Exceptions::NotSupportedException(MVA_element);
+
+#if 4 <= VERBOSITY
+std::cout << MVA_element << " has been pushed_back\n" << std::endl;
+#endif
 
 	return "";
 
